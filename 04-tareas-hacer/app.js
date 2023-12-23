@@ -1,12 +1,18 @@
 require('colors');
-const { menuShow, pausa } = require('./helpers/mensajes');
+const { Menu } = require('./helpers/inquirer');
 
 console.clear();
 
 const main = async() => {
-    console.log('Maquinitas.')
-    menuShow();
-    pausa();
+    console.log('Maquinitas.');
+
+    let opt = '';
+
+    do {
+        opt = await Menu();
+        console.log({ opt });
+        await pausa();
+    } while( opt !== '0' )
 }
 
 main();
