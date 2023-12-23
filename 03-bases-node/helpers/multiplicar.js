@@ -1,22 +1,26 @@
-const fs = require('fs');
+const fs = require('fs'),
+      colors = require('colors');
 //Async regresa una promesa de una función
-const createTxt = async( numTabla = 5 ) => {
+const createTxt = async( numTabla = 5, listar = false, hasta = 10 ) => {
 
 
   try {
 
-      console.log(`***************************
-          TABLA DEL ${ numTabla }
-***************************\n`);
-      let salida = '';
-      for (i=1; i<=10; i++){
+    let salida = '';
+    for (i=1; i<=hasta; i++){
       multi = numTabla * i;
       salida += `${numTabla}X${i}=${multi}\n`;
     }
     
-      console.log(salida);
-      fs.writeFileSync( 'tabla.txt', salida );
-      return`¡Tabla del ${numTabla} guardada como texto!`;
+  if ( listar ){ 
+     console.log(`***************************
+    TABLA DEL ${ numTabla }
+***************************\n${ salida }`.rainbow)
+  }
+
+
+      fs.writeFileSync( './salida/tabla.txt', salida );
+      return`¡Tabla del ${numTabla} guardada como texto!`.rainbow;
     
   } catch (err) {
     throw err;
