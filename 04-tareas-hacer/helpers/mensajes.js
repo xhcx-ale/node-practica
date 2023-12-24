@@ -3,7 +3,7 @@ require('colors');
 const menuShow = () => {
 
     return new Promise( resolve => {
-        console.clear;
+       // console.clear;
         console.log(`====================================
                 ${'Opción:'.cyan}
 ====================================\n`);
